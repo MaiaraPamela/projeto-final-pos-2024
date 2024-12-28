@@ -1,19 +1,30 @@
 {
-  "name": "jsonplaceholder-clone",
+  "name": "projeto-final-pos-2024",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "Projeto Final da disciplina de POS",
+  "main": "index.js",
   "scripts": {
-    "build": "npx swc ./server.js -o ./dist/server.js",
-    "start": "node ./dist/server.js"
-    
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaiaraPamela/projeto-final-pos-2024.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaiaraPamela/projeto-final-pos-2024/issues"
+  },
+  "homepage": "https://github.com/MaiaraPamela/projeto-final-pos-2024#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "@swc/core": "^1.3.72",
-    "@swc/cli": "^0.1.62"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5"
+    "nodemon": "^3.1.9"
   }
 }
