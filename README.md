@@ -2,4 +2,4 @@
 Projeto Final da disciplina de POS
 
 
-Aluna: Maiara Pamela sousa Querino
+Aluna: Maiara Pamela Sousa Querino
