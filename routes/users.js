@@ -1,14 +1,28 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/user');
 
-// Exemplo de rota para listar usuários
-router.get('/', (req, res) => {
-    res.send('Lista de usuários');
+// CRUD para Users
+router.get('/', async (req, res) => {
+  const users = await User.findAll();
+  res.json(users);
 });
 
-// Exemplo de rota para criar um usuário
-router.post('/', (req, res) => {
-    res.send('Usuário criado');
+router.post('/', async (req, res) => {
+  const newUser = await User.create(req.body);
+  res.json(newUser);
 });
 
-module.exports = router;  // Exportando corretamente o router
+router.put('/:id', async (req, res) => {
+  const user = await User.findByPk(req.params.id);
+  await user.update(req.body);
+  res.json(user);
+});
+
+router.delete('/:id', async (req, res) => {
+  const user = await User.findByPk(req.params.id);
+  await user.destroy();
+  res.json({ message: 'User deleted' });
+});
+
+module.exports = router;
