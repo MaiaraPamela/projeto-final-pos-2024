@@ -7,14 +7,13 @@ const commentRoutes = require('./routes/comments');
 const albumRoutes = require('./routes/albums');
 const photoRoutes = require('./routes/photos');
 
-// Configurar sincronização do banco de dados e iniciar o servidor
 afterSync();
 
 function afterSync() {
-    sequelize.sync({ force: true }) // Apaga e recria o banco de dados
+    sequelize.sync({ force: true }) 
         .then(() => {
             console.log('Banco de dados sincronizado!');
-            startServer(); // Iniciar o servidor após a sincronização
+            startServer(); 
         })
         .catch(error => {
             console.error('Erro ao sincronizar o banco de dados:', error);
@@ -24,9 +23,8 @@ function afterSync() {
 function startServer() {
     const app = express();
 
-    app.use(express.json()); // Middleware para JSON
+    app.use(express.json());
 
-    // Usando as rotas corretamente
     app.use('/users', userRoutes);
     app.use('/posts', postRoutes);
     app.use('/todos', todoRoutes);

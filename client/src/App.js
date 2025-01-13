@@ -3,7 +3,6 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  // Estados para armazenar dados
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
@@ -12,7 +11,6 @@ function App() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  // Função para buscar dados da API
   const fetchUsers = async () => {
     try {
       const response = await fetch('http://localhost:3000/users');
@@ -25,20 +23,16 @@ function App() {
     }
   };
 
-  // Função para criar/editar usuário
   const handleSubmit = async (event) => {
     event.preventDefault();
     const userData = { name, email, phone };
 
     try {
       if (isEditing) {
-        // Edita um usuário existente
         await axios.put(`http://localhost:3000/users/${currentUserId}`, userData);
       } else {
-        // Cria um novo usuário
         await axios.post('http://localhost:3000/users', userData);
       }
-      // Após salvar, atualiza a lista de usuários
       fetchUsers();
       resetForm();
     } catch (error) {
@@ -46,7 +40,6 @@ function App() {
     }
   };
 
-  // Função para resetar o formulário
   const resetForm = () => {
     setName('');
     setEmail('');
@@ -55,7 +48,6 @@ function App() {
     setCurrentUserId(null);
   };
 
-  // Função para editar um usuário existente
   const handleEdit = (user) => {
     setName(user.name);
     setEmail(user.email);
@@ -64,7 +56,6 @@ function App() {
     setCurrentUserId(user.id);
   };
 
-  // Função para excluir um usuário
   const handleDelete = async (userId) => {
     try {
       await axios.delete(`http://localhost:3000/users/${userId}`);
@@ -74,7 +65,6 @@ function App() {
     }
   };
 
-  // UseEffect para buscar dados quando o componente for montado
   useEffect(() => {
     fetchUsers();
   }, []);

@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db/connection');
 
-// Definição do modelo User
 const User = sequelize.define('User', {
     name: {
         type: DataTypes.STRING,
@@ -17,7 +16,7 @@ const User = sequelize.define('User', {
         allowNull: false,
     },
 }, {
-    timestamps: true, // Cria colunas de data/hora automaticamente
+    timestamps: true,
 });
 
 module.exports = User;
